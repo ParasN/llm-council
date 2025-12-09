@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import './Sidebar.css';
 
 export default function Sidebar({
@@ -6,7 +5,18 @@ export default function Sidebar({
   currentConversationId,
   onSelectConversation,
   onNewConversation,
+  onDeleteConversation,
 }) {
+  const handleDeleteClick = (event, conversationId) => {
+    event.stopPropagation();
+    const confirmed = window.confirm(
+      'Delete this conversation? This action cannot be undone.'
+    );
+    if (confirmed) {
+      onDeleteConversation(conversationId);
+    }
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
@@ -28,12 +38,22 @@ export default function Sidebar({
               }`}
               onClick={() => onSelectConversation(conv.id)}
             >
-              <div className="conversation-title">
-                {conv.title || 'New Conversation'}
+              <div className="conversation-details">
+                <div className="conversation-title">
+                  {conv.title || 'New Conversation'}
+                </div>
+                <div className="conversation-meta">
+                  {conv.message_count} messages
+                </div>
               </div>
-              <div className="conversation-meta">
-                {conv.message_count} messages
-              </div>
+              <button
+                className="delete-conversation-btn"
+                onClick={(event) => handleDeleteClick(event, conv.id)}
+                aria-label="Delete conversation"
+                title="Delete conversation"
+              >
+                ×
+              </button>
             </div>
           ))
         )}
