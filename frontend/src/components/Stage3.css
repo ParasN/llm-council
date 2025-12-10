@@ -3,6 +3,47 @@
   border-color: #c8e6c8;
 }
 
+.stage3 .stage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.stage3 .stage-title {
+  margin: 0;
+}
+
+.export-pdf-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1px solid #c8e6c8;
+  border-radius: 4px;
+  color: #2d8a2d;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-pdf-btn:hover {
+  background: #2d8a2d;
+  color: #ffffff;
+  border-color: #2d8a2d;
+}
+
+.export-pdf-btn:active {
+  transform: translateY(1px);
+}
+
+.export-pdf-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
 .final-response {
   background: #ffffff;
   padding: 20px;
